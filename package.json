@@ -3,6 +3,9 @@
   "version": "0.0.1",
   "description": "Backend routes to crub data for bernard thompson profile",
   "main": "index.js",
+  "engines": {
+    "node": ">=14.0.0" 
+  },
   "scripts": {
     "start": "node index.js",
     "dev": "nodemon index.js",
@@ -11,9 +14,11 @@
   "author": "Bernard Thompson",
   "license": "ISC",
   "dependencies": {
+    "body-parser": "^1.19.0",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
     "mongodb": "^4.1.0",
+    "mongoose": "^5.13.7",
     "nodemon": "^2.0.12"
   }
 }
