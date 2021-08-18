@@ -3,9 +3,7 @@ const dotenv = require("dotenv");
 dotenv.config();
 
 const dbName = process.env.DB_NAME || "profile";
-const mongo_conn_url =
-  process.env.MONGO_CONN_URL ||
-  `mongodb://localhost:27017//${dbName}?readPreference=primary&appname=MongoDB%20Compass&ssl=false`;
+const mongo_conn_url = process.env.MONGO_CONN_URL || `mongodb://127.0.0.1:27017/${dbName}`;
 
 const connectMongoDB = async () => {
   try {

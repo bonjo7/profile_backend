@@ -1,10 +1,7 @@
 const mongoose = require("mongoose");
+const Schema = mongoose.Schema;
 
-const EducationScheme = new mongoose.Schema({
-  img: {
-    data: Buffer,
-    contentType: String,
-  },
+const EducationUpload = new Schema({
   name: {
     type: String,
     required: true,
@@ -23,6 +20,13 @@ const EducationScheme = new mongoose.Schema({
   link: {
     type: String,
   },
+  image: {
+    type: String,
+  },
+  time: {
+    type: Date,
+    default: Date.now,
+  },
 });
 
-module.exports = mongoose.model("eduction", EducationScheme);
+module.exports = mongoose.model("education", EducationUpload);

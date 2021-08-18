@@ -4,7 +4,7 @@
   "description": "Backend routes to crub data for bernard thompson profile",
   "main": "index.js",
   "engines": {
-    "node": ">=14.0.0" 
+    "node": ">=14.0.0"
   },
   "scripts": {
     "start": "node index.js",
@@ -15,10 +15,17 @@
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.19.0",
+    "cloudinary": "^1.26.3",
+    "cors": "^2.8.5",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
+    "express-fileupload": "^1.2.1",
     "mongodb": "^4.1.0",
     "mongoose": "^5.13.7",
-    "nodemon": "^2.0.12"
+    "multer": "^1.4.3",
+    "multer-gridfs-storage": "^5.0.1",
+    "multer-storage-cloudinary": "^4.0.0",
+    "nodemon": "^2.0.12",
+    "uuid": "^8.3.2"
   }
 }
