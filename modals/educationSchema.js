@@ -22,6 +22,7 @@ const EducationUpload = new Schema({
   },
   image: {
     type: String,
+    required: true,
   },
   time: {
     type: Date,
