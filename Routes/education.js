@@ -2,8 +2,9 @@ const express = require("express");
 const app = express.Router()
 const EducationSchema = require("../modals/educationSchema");
 const parser = require("../middleware/cloudinary.config");
+const auth = require("../middleware/auth");
 
-app.post("/", parser.single("image"), async (req, res) => {
+app.post("/", parser.single("image"), auth, async (req, res) => {
   const education = new EducationSchema({
     name: req.body.name,
     course: req.body.course,

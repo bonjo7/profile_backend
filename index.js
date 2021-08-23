@@ -6,6 +6,7 @@ const dotenv = require("dotenv");
 const version = process.version;
 const database = require("./Database/db");
 const EducationRoute = require("./Routes/education");
+const UserRoute = require("./Routes/user");
 
 database();
 dotenv.config();
@@ -29,7 +30,8 @@ app.get("/", (req, res) => {
   });
 });
 
-app.use("/api", EducationRoute);
+app.use("/education", EducationRoute);
+app.use("/user", UserRoute);
 
 app.listen(port, () => {
   console.log(
