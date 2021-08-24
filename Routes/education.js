@@ -1,5 +1,5 @@
 const express = require("express");
-const app = express.Router()
+const app = express.Router();
 const EducationSchema = require("../modals/educationSchema");
 const parser = require("../middleware/cloudinary.config");
 const auth = require("../middleware/auth");
@@ -7,6 +7,7 @@ const auth = require("../middleware/auth");
 app.post("/", parser.single("image"), auth, async (req, res) => {
   const education = new EducationSchema({
     name: req.body.name,
+    address: req.body.address,
     course: req.body.course,
     year: req.body.year,
     grade: req.body.grade,
@@ -21,6 +22,7 @@ app.post("/", parser.single("image"), auth, async (req, res) => {
       status: "success",
     });
   } catch (error) {
+    console.log(error);
     return res.status(400).json({
       message: `Image upload failed with error: ${error}`,
       status: "error",
@@ -29,10 +31,10 @@ app.post("/", parser.single("image"), auth, async (req, res) => {
 });
 
 app.get("/", async (req, res) => {
-  const education = await EducationSchema.find({});
+  const education = await EducationSchema.find({}).sort({ time: -1 });
 
   try {
-    res.send(education)
+    res.send(education);
   } catch (error) {
     return res.status(400).json({
       message: `Error getting education: ${error}`,
@@ -42,5 +44,3 @@ app.get("/", async (req, res) => {
 });
 
 module.exports = app;
-
-

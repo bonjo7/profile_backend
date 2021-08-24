@@ -39,7 +39,7 @@ app.post("/register", async (req, res) => {
     user.token = token;
 
     res.status(201).json(user);
-  } catch (err) {
+  } catch (error) {
     return res.status(400).json({
       message: `Error: ${error}`,
       status: "error",
@@ -50,7 +50,6 @@ app.post("/register", async (req, res) => {
 app.post("/login", async (req, res) => {
   try {
     const { username, password } = req.body;
-
     if (!(username && password)) {
       res.status(400).send("All input is required");
     }
@@ -63,17 +62,16 @@ app.post("/login", async (req, res) => {
       });
 
       user.token = token;
-      res.status(200).json(user);
+
+      const userResult = {
+        username: user.username,
+        token: user.token,
+        TOKEN_KEY: tokenKey,
+      };
+      res.status(200).json(userResult);
     }
-    res.status(400).json({
-      message: `Ivalid credentials`,
-      status: "error",
-    });
-  } catch (err) {
-    return res.status(400).json({
-      message: `Error: ${error}`,
-      status: "error",
-    });
+  } catch (error) {
+    console.log(error);
   }
 });
 

@@ -6,6 +6,9 @@ const EducationUpload = new Schema({
     type: String,
     required: true,
   },
+  address: {
+    type: String,
+  },
   course: {
     type: String,
     required: true,
