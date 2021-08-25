@@ -12,7 +12,7 @@ app.post("/register", async (req, res) => {
     if (!(username && password)) {
       return res.status(400).json({
         message: `Username and password is required`,
-        status: "error",
+        status: "ERROR",
       });
     }
 
@@ -21,7 +21,7 @@ app.post("/register", async (req, res) => {
     if (oldUser) {
       return res.status(400).json({
         message: `User already exists`,
-        status: "error",
+        status: "ERROR",
       });
     }
 
@@ -42,7 +42,7 @@ app.post("/register", async (req, res) => {
   } catch (error) {
     return res.status(400).json({
       message: `Error: ${error}`,
-      status: "error",
+      status: "ERROR",
     });
   }
 });
@@ -51,7 +51,10 @@ app.post("/login", async (req, res) => {
   try {
     const { username, password } = req.body;
     if (!(username && password)) {
-      res.status(400).send("All input is required");
+      return res.status(400).json({
+        message: `Both username and password are required`,
+        status: "ERROR",
+      });
     }
 
     const user = await UserSchema.findOne({ username });
@@ -69,9 +72,17 @@ app.post("/login", async (req, res) => {
         TOKEN_KEY: tokenKey,
       };
       res.status(200).json(userResult);
+    }else{
+      return res.status(401).json({
+        message: `No user found, please use correct credentials`,
+        status: "ERROR",
+      });
     }
   } catch (error) {
-    console.log(error);
+    return res.status(500).json({
+      message: `Error logging in - ${error}`,
+      status: "ERROR",
+    });
   }
 });
 
