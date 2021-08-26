@@ -6,6 +6,7 @@ const dotenv = require("dotenv");
 const version = process.version;
 const database = require("./Database/db");
 const EducationRoute = require("./Routes/education");
+const ExperienceRoute = require("./Routes/experience");
 const UserRoute = require("./Routes/user");
 
 database();
@@ -31,6 +32,7 @@ app.get("/", (req, res) => {
 });
 
 app.use("/education", EducationRoute);
+app.use("/EXPERIENCE", ExperienceRoute);
 app.use("/user", UserRoute);
 
 app.listen(port, () => {
