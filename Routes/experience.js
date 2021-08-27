@@ -11,7 +11,7 @@ app.post("/", parser.single("image"), auth, async (req, res) => {
     const experience = new ExperienceSchema({
       companyName: req.body.companyName,
       year: req.body.year,
-      positionHeld: req.body.positionHeld,
+      positionHeld: JSON.parse(req.body.positionHeld),
       address: req.body.address,
       responsibilities: req.body.responsibilities,
       image: req.file.path,
