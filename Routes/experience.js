@@ -6,14 +6,14 @@ const auth = require("../middleware/auth");
 
 app.post("/", parser.single("image"), auth, async (req, res) => {
   if (req.body && req.file) {
-      console.log(req.file)
-      console.log(req.body)
     const experience = new ExperienceSchema({
       companyName: req.body.companyName,
       year: req.body.year,
       positionHeld: JSON.parse(req.body.positionHeld),
       address: req.body.address,
-      responsibilities: req.body.responsibilities,
+      responsibilities: req.body.responsibilities
+        .split(".")
+        .map((responsibilities) => responsibilities.trim()),
       image: req.file.path,
     });
 

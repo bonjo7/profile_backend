@@ -7,7 +7,6 @@ const ExperienceSchema = new mongoose.Schema({
   },
   year: {
     type: String,
-    required: true,
   },
   positionHeld: [{
     positionHeldYear : {type: String, required: true},
@@ -15,15 +14,12 @@ const ExperienceSchema = new mongoose.Schema({
   }],
   address: {
     type: String,
-    required: true,
   },
   responsibilities: {
     type: [String],
-    required: true,
   },
   image: {
     type: String,
-    required: true,
   },
   time: {
     type: Date,
