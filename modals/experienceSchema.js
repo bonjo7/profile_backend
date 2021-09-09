@@ -9,10 +9,11 @@ const ExperienceSchema = new mongoose.Schema({
     type: Date,
   },
   companyFinishDate: {
-    type: Date,
+    type: String,
   },
   positionHeld: [{
-    positionHeldYear : {type: String, required: true},
+    positionStartDate : {type: Date, required: true},
+    positionFinishDate : {type: String, required: true},
     positionHeldTitle : {type: String, required: true},
   }],
   address: {
