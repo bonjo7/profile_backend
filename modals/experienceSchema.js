@@ -5,8 +5,11 @@ const ExperienceSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  year: {
-    type: String,
+  companyStartDate: {
+    type: Date,
+  },
+  companyFinishDate: {
+    type: Date,
   },
   positionHeld: [{
     positionHeldYear : {type: String, required: true},

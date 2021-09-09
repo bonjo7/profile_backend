@@ -8,11 +8,12 @@ app.post("/", parser.single("image"), auth, async (req, res) => {
   if (req.body && req.file) {
     const experience = new ExperienceSchema({
       companyName: req.body.companyName,
-      year: req.body.year,
+      companyStartDate: req.body.companyStartDate,
+      companyFinishDate: req.body.companyFinishDate,
       positionHeld: JSON.parse(req.body.positionHeld),
       address: req.body.address,
       responsibilities: req.body.responsibilities
-        .split(".")
+        .split("\n")
         .map((responsibilities) => responsibilities.trim()),
       image: req.file.path,
     });
