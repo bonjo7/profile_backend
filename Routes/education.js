@@ -10,9 +10,10 @@ app.post("/", parser.single("image"), auth, async (req, res) => {
       name: req.body.name,
       address: req.body.address,
       course: req.body.course,
-      year: req.body.year,
-      grade: req.body.grade,
-      link: req.body.link,
+      startDate: req.body.startDate,
+      finishDate: req.body.finishDate,
+      grade: req.body.grade ? req.body.grade : "n/a",
+      link: req.body.link ? req.body.link : "n/a",
       image: req.file.path,
     });
 
@@ -30,7 +31,7 @@ app.post("/", parser.single("image"), auth, async (req, res) => {
     }
   } else {
     return res.status(400).json({
-      message: `Please fill in all required fields: ${error}`,
+      message: `Please fill in all required fields`,
       status: "ERROR",
     });
   }

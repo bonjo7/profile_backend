@@ -4,18 +4,18 @@ const Schema = mongoose.Schema;
 const EducationUpload = new Schema({
   name: {
     type: String,
-    required: true,
   },
   address: {
     type: String,
   },
   course: {
     type: String,
-    required: true,
   },
-  year: {
+  startDate: {
+    type: Date,
+  },
+  finishDate: {
     type: String,
-    required: true,
   },
   grade: {
     type: String,
@@ -25,7 +25,6 @@ const EducationUpload = new Schema({
   },
   image: {
     type: String,
-    required: true,
   },
   time: {
     type: Date,
