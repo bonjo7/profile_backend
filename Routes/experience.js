@@ -52,4 +52,13 @@ app.get("/", async (req, res) => {
   }
 });
 
+app.get("/experience/:id", async (req, res) => {
+  ExperienceSchema.findById(req.params.id)
+  .then((exp) => {
+    res.send(exp)
+  }).catch((err) => {
+    console.log(err)
+  })
+})
+
 module.exports = app;
